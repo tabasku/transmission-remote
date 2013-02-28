@@ -17,17 +17,10 @@ import connection
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
         QtGui.QMainWindow.__init__(self)
-        #self.initConnection()
-
         self.initUI()
         pass
 
-
-
-
     def initUI(self):
-
-
         self.mainui = mainui.Mainui()
         self.connection = connection.Connection()
        # self.settingui = settingui.Settingui()

@@ -40,7 +40,3 @@ class Torrentui(QtGui.QWidget):
         box.addLayout(vbox)
 
         self.setLayout(box)
-
-
-    def buttonClick(self):
-        print "ANAL IS BEST THING IN WORLD!"

@@ -22,10 +22,6 @@ class Connection:
         except transmissionrpc.error.TransmissionError:
             print "Connection refused!"
 
-
-
-
-
     def init(self):
 
         self.settingio = settingio.Settingio()

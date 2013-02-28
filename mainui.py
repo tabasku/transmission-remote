@@ -17,8 +17,6 @@ class Mainui(QtGui.QWidget):
         self.mainui()
         pass
 
-
-
     def mainui(self):
       #self.setGeometry(10,10,600,100)
       self.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()));
