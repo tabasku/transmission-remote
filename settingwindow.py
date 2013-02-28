@@ -114,7 +114,7 @@ class Settingwindow(QtGui.QWidget):
         print "setting window launched!"
 
     def buttonClick(self):
-        print "ANAL IS BEST THING IN WORLD!"
+        print "button click"
 
     def okClick(self):
         print "OK"
