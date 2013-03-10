@@ -16,14 +16,16 @@ import connection
 
 class MainWindow(QtGui.QMainWindow):
     def __init__(self):
-        QtGui.QMainWindow.__init__(self)
+        super (QtGui.QMainWindow,self).__init__()
+
         self.initUI()
         pass
 
     def initUI(self):
-        self.mainui = mainui.Mainui()
+        self.setGeometry((self.width())/2, (self.height()-100)/2, 700, 500)
+        self.setWindowTitle('Transmission Remote')
+        self.setWindowIcon(QtGui.QIcon('icons/transmission.png'))
         self.connection = connection.Connection()
-       # self.settingui = settingui.Settingui()
 
 
         QtGui.QToolTip.setFont(QtGui.QFont('SansSerif', 10))
@@ -47,16 +49,17 @@ class MainWindow(QtGui.QMainWindow):
         self.toolbar.addAction(connectAction)
 
         #Create scrollable area with mainui inside
-        scrollArea = QtGui.QScrollArea()
+        scrollArea = QtGui.QScrollArea(self)
+        scrollArea.setWidgetResizable(True)
+        self.mainui = mainui.Mainui(scrollArea)
         scrollArea.setBackgroundRole(QtGui.QPalette.Dark)
+        scrollArea.resize(self.width(),self.height())
         scrollArea.setWidget(self.mainui)
 
         #Set centralwidget
         self.setCentralWidget(scrollArea)
 
-        self.setGeometry((self.width())/2, (self.height()-100)/2, 700, 500)
-        self.setWindowTitle('Transmission Remote')
-        self.setWindowIcon(QtGui.QIcon('icons/transmission.png'))
+
         self.show()
 
     def settingClick(self):

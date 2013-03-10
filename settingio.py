@@ -12,6 +12,7 @@ class Settingio:
     def init(self):
         global setting
 
+        settingslist = []
         setting = ConfigObj('transmissionremote.ini')
         print "Setting IO loaded"
 

@@ -8,35 +8,43 @@ except:
     from PyQt4 import QtGui
     from PyQt4 import QtCore
 
+import connection
+#import transmissionrpc
 import torrentui
 
 class Mainui(QtGui.QWidget):
-    def __init__(self):
-        QtGui.QWidget.__init__(self)
-        self.setStyleSheet("background-color:blue")
+    def __init__(self,parent):
+        super (QtGui.QWidget,self).__init__(parent)
+        self.connection = connection.Connection()
         self.mainui()
         pass
 
     def mainui(self):
-      #self.setGeometry(10,10,600,100)
-      self.setGeometry(QtCore.QRect(0, 0, self.width(), self.height()));
-      self.torrentui = torrentui.Torrentui()
-      self.torrentui1 = torrentui.Torrentui()
-      self.torrentui2 = torrentui.Torrentui()
-      self.torrentui3 = torrentui.Torrentui()
 
-      box = QtGui.QBoxLayout(QtGui.QBoxLayout.LeftToRight, self)
+
+
+
+      #torrentui2 = torrentui.Torrentui(self)
+      #torrentui3 = torrentui.Torrentui(self)
+
+      box = QtGui.QBoxLayout(QtGui.QBoxLayout.TopToBottom, self)
+
 
       vbox = QtGui.QVBoxLayout()
       #vbox.addStretch(1)
-      vbox.addWidget(self.torrentui3)
-      vbox.addWidget(self.torrentui2)
-      vbox.addWidget(self.torrentui1)
 
+      torrentui1 = torrentui.Torrentui(self)
+      vbox.addWidget(torrentui1)
       box.addLayout(vbox)
 
       self.setLayout(box)
 
 
+      #vbox.addWidget(torrentui2)
+      #vbox.addWidget(torrentui3)
+
+
+
+
     def buttonClick(self):
-      print "ANAL IS BEST THING IN WORLD!"
+      print "clicl"
