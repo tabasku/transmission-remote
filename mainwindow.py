@@ -27,6 +27,11 @@ class MainWindow(QtGui.QMainWindow):
         self.setWindowIcon(QtGui.QIcon('icons/transmission.png'))
         self.connection = connection.Connection()
 
+        if self.connection.init() == False:
+            self.settingwindow = settingwindow.Settingwindow()
+        else:
+            pass
+
 
         QtGui.QToolTip.setFont(QtGui.QFont('SansSerif', 10))
 
@@ -69,6 +74,6 @@ class MainWindow(QtGui.QMainWindow):
     def connectClick(self):
         print "Connection start"
         self.connection = connection.Connection()
-        self.connection.test()
+        #self.connection.test()
 
 

@@ -16,22 +16,23 @@ class Connection:
         pass
 
     def test(self):
-        print "test connection"
         settingslist = self.settingio.get()
         global host, port, tc
         host = settingslist[0]
         port = settingslist[1]
         try:
             tc = transmissionrpc.Client(host, port)
-            print "Connection success"
+            return True
+            #print "Test success"
         except transmissionrpc.error.TransmissionError:
-            print "Connection refused!"
+            print "Test refused!"
+            return False
 
     def gettorrents(self):
         try:
             global host, port, tc
             tc = transmissionrpc.Client(host, port)
-            print "Connection success"
+            print "Get torrent success"
             torrents = tc.get_torrents()
         except transmissionrpc.error.TransmissionError:
             print "Connection refused!"
@@ -41,22 +42,27 @@ class Connection:
         try:
             global host, port, tc
             tc = transmissionrpc.Client(host, port)
-            print "Connection success"
+            print "Get tc success"
         except transmissionrpc.error.TransmissionError:
             print "Connection refused!"
         return tc
 
     def init(self):
-        self.settingio = settingio.Settingio()
-        settingsfound = self.settingio.load()
+        try:
+            self.settingio = settingio.Settingio()
+            settingsfound = self.settingio.load()
+        except AttributeError:
+            print "PERKELE"
+
 
         if settingsfound == False:
             print "Please set settings!"
             self.settingwindow = settingwindow.Settingwindow()
+            return False
         else:
-            print "Settings found!"
             settingslist = self.settingio.get()
             self.test()
+            return True
 
 
 

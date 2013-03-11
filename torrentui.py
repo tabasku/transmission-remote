@@ -11,6 +11,7 @@ except:
 import mainui
 import connection
 import tmotor
+import time
 
 class Torrentui(QtGui.QFrame):
     def __init__(self,parent):
@@ -26,12 +27,17 @@ class Torrentui(QtGui.QFrame):
         #self.torrentui()
 
     def torrentui(self):
+        #tstart= time.clock()
+        #while(tnow == tstart+5)
+        #time.sleep(5)
+        #tnow = time.clock()
+        #print tstart
+        #print tnow
         self.tmotor = tmotor.Tmotor(0)
         status = self.tmotor.getstatus()
         name = self.tmotor.getname()
         ratio = self.tmotor.getratio()
         progress = self.tmotor.getprogress()
-        print self.tmotor.getcount()
 
         nametext = "<font size=\"5\" color=\"black\">" + name + "</font>"
         statustext = "<font size=\"3\" color=\"black\">Status: </font><font size=\"3\" color=\"red\">" + status + "</font>"
@@ -40,6 +46,7 @@ class Torrentui(QtGui.QFrame):
         ratiolabel = QtGui.QLabel(ratiotext, self)
         statuslabel = QtGui.QLabel(statustext, self)
         prb = QtGui.QProgressBar(self)
+        prb.setFixedHeight(30)
         prb.setValue(progress)
         box = QtGui.QBoxLayout(QtGui.QBoxLayout.TopToBottom, self)
         hbox = QtGui.QHBoxLayout()
@@ -54,6 +61,5 @@ class Torrentui(QtGui.QFrame):
         vbox.addLayout(hbox)
         box.addLayout(vbox)
 
-        print "VBOX:",self.height()
         self.setLayout(box)
 

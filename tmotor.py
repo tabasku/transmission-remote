@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import connection
-import transmissionrpc
+#import transmissionrpc
 
 class Tmotor:
     def __init__(self,id):
@@ -10,7 +10,6 @@ class Tmotor:
         pass
 
     def getstatus(self):
-        print self.torrents[self.id]
         status = self.torrents[self.id].status
         return status
 
@@ -38,7 +37,7 @@ class Tmotor:
 
     def init(self):
         self.torrents = connection.Connection().gettorrents()
-        self.tc = connection.Connection().gettc()
+        #self.tc = connection.Connection().gettc()
 
 
 
